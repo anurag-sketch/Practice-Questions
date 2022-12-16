@@ -11,7 +11,7 @@ class Solution
     void sort012(int a[], int n)
     {
         // code here
-        vector<int> arr;
+
         int count0=0;
         int count1=0;
         int count2=0;
@@ -31,23 +31,41 @@ class Solution
             }
         }
         
+        // for(int i=0;i<count0;i++)
+        // {
+        //     arr.push_back(0);
+        // }
+        //  for(int i=0;i<count1;i++)
+        // {
+        //     arr.push_back(1);
+        // }
+        //  for(int i=0;i<count2;i++)
+        // {
+        //     arr.push_back(2);
+        // }
+      
+        // for(int i=0;i<n;i++)
+        // {
+        //     a[i]=arr[i];
+        // }
+        
+        int k=0;
         for(int i=0;i<count0;i++)
         {
-            arr.push_back(0);
+            a[k]=0;
+            k++;
         }
-         for(int i=0;i<count1;i++)
+          for(int i=0;i<count1;i++)
         {
-            arr.push_back(1);
+            a[k]=1;
+            k++;
         }
-         for(int i=0;i<count2;i++)
+          for(int i=0;i<count2;i++)
         {
-            arr.push_back(2);
+            a[k]=2;
+            k++;
         }
       
-        for(int i=0;i<n;i++)
-        {
-            a[i]=arr[i];
-        }
       
       return;
         
