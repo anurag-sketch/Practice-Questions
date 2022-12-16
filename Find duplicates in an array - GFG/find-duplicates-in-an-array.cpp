@@ -8,45 +8,67 @@ class Solution{
     vector<int> duplicates(int arr[], int n) {
         // code here
         
-        int mx=INT_MIN;
-        for(int i=0;i<n;i++)
-        {
-            mx=max(mx,arr[i]);
-        }
+        // int mx=INT_MIN;
+        // for(int i=0;i<n;i++)
+        // {
+        //     mx=max(mx,arr[i]);
+        // }
         
-        int krr[mx+1];
+        // int krr[mx+1];
         
-        for(int i=0;i<mx+1;i++)
-        {
-            krr[i]=0;
-        }
+        // for(int i=0;i<mx+1;i++)
+        // {
+        //     krr[i]=0;
+        // }
         
-        int j=0;
-        while(j<n)
-        {
-            krr[arr[j]]++;
-            j++;
-        }
+        // int j=0;
+        // while(j<n)
+        // {
+        //     krr[arr[j]]++;
+        //     j++;
+        // }
         
-        vector<int> ans;
-        for(int i=0;i<mx+1;i++)
+        // vector<int> ans;
+        // for(int i=0;i<mx+1;i++)
+        // {
+        //     if(krr[i]>1)
+        //     {
+        //         ans.push_back(i);
+        //     }
+        // }
+        // vector<int> ks;
+        // ks.push_back(-1);
+        // if(ans.size()==0)
+        // {
+        //     return ks;
+        // }
+        // else
+        // {
+        //     return ans;
+        // }
+        
+       for(int i=0;i<n;i++)
+       {
+           arr[arr[i] % n] = arr[arr[i] % n ] + n;
+           
+       }
+       vector<int> ans;
+       for(int i=0;i<n;i++)
         {
-            if(krr[i]>1)
+            if(arr[i]/n > 1)
             {
                 ans.push_back(i);
             }
         }
-        vector<int> ks;
-        ks.push_back(-1);
-        if(ans.size()==0)
+        if(ans.size() == 0)
         {
-            return ks;
+            ans.push_back(-1);
+            return ans;
         }
         else
         {
             return ans;
         }
-        
     }
 };
 
