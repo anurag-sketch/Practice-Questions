@@ -19,11 +19,11 @@ void printArray(int arr[], int size)
 class Solution
 {
     public:
-   long long int b[100009];
+    int b[100009];
     void merge(int arr[], int l, int m, int r)
     {
-       long long  int i=l;
-      long long int j = m+1;
+         int i=l;
+      int j = m+1;
         int k=l;
         
         while(i<=m && j<=r)
