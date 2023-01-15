@@ -1,48 +1,51 @@
 class Solution {
 public:
     string greatestLetter(string s) {
-        string s1;
-        string s2;
+            string xx ="";
         
-
         for(int i=0;i<s.size();i++)
         {
-          if((int(s[i]) >= 97) && (int(s[i]) <= 122))
-          {
-              s1.push_back(s[i]);
-          }
-          else
-          {
-            s2.push_back(s[i]);
-          }
-        }
-        
-        string ans;
-        
-        for(int i=0;i<s1.size();i++)
-        {
-            char x = toupper(s1[i]);
-            for(int j=0;j<s2.size();j++)
+            if((int(s[i]) >= 97) && (int(s[i]) <=122))
             {
-                if(x == s2[j]) 
-                ans.push_back(x);
+                for(int j=0;j<s.size();j++)
+                {
+                    if(i != j)
+                    {
+                        if(s[j] == toupper(s[i]))
+                        {
+                          xx.push_back(s[j]);  
+                        }
+                    }
+                }
             }
+            else
+            {
+                for(int j=0;j<s.size();j++)
+                {
+                    if(i!=j)
+                    {
+                        if(s[j] == tolower(s[i]))
+                        {
+                            xx.push_back(s[j]);
+                        }
+                    }
+                }
+            }
+            
         }
-        if(ans.size() == 0)
+        if(xx.size() == 0)
         {
-            string kk = "";
-            return kk;
+            string k = "";
+            return k;
         }
         else
         {
-                sort(ans.begin(),ans.end());
-        string kk ="";
-        kk.push_back(ans[ans.size()-1]);
-        return kk;
-        
+                sort(xx.begin(),xx.end());
+        string ans;
+        ans.push_back(toupper(xx[xx.size() - 1]));
+        return ans;
         }
     
-        
         
     }
 };
