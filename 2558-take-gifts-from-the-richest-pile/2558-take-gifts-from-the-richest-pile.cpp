@@ -17,11 +17,11 @@ public:
                 if(mx == gifts[i])
                 {
                     index=i;
-    
+                    gifts[i] = floor(sqrt(gifts[i]));
+                  break;
                 }
                 
             }
-            gifts[index] = floor(sqrt(gifts[index]));
             test++;
         }
         long long sum=0;
