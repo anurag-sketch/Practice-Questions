@@ -1,62 +1,39 @@
 class Solution {
 public:
     
-    vector<vector<int>> ans;
+    set<vector<int>> s;
     
-       vector<vector<int>> solve(vector<int> ip , vector<int> op)
+    void ms(int index, vector<int> &temp, int size, vector<int>& nums)
     {
-        
-        if(ip.size()==0)
+        if(index == size)
         {
-            ans.push_back(op);
-            return ans;
+            s.insert(temp);
+            return;
         }
         
-        vector<int> op1;
-        vector<int> op2;
-        op1=op;
-        op2=op;
-        op2.push_back(ip[0]);
+        temp.push_back(nums[index]);
+        ms(index+1,temp,size,nums);
+        temp.pop_back();
+        ms(index+1,temp,size,nums);
         
-     ip.erase(ip.begin()+0);
-        solve(ip,op1);
-        solve(ip,op2);
-        return ans;
+        return;
+        
     }
     
-    
-    
     vector<vector<int>> subsetsWithDup(vector<int>& nums) {
+        vector<int> temp;
+        sort(nums.begin(),nums.end());
+        ms(0,temp,nums.size(),nums);
         
-        vector<int> ip;
-        ip=nums;
-        vector<int> op;
-        vector<vector<int>> fina;
-        fina=solve(ip,op);
-        sort(fina.begin(), fina.end());
+        vector<vector<int>> ans;
         
-        for(int i=0;i<fina.size();i++)
+        set<vector<int>> :: iterator it;
+        
+        for(it=s.begin();it!=s.end();it++)
         {
-            sort(fina[i].begin(),fina[i].end());
+            ans.push_back(*it);
         }
-        
-        
-        map<vector<int>,int> mp;
-        for(int i=0;i<fina.size();i++)
-        {
-            mp[fina[i]]++;
-        }
-        vector<vector<int>> kima;
-        map<vector<int>,int> :: iterator jp;
-        
-        for(jp=mp.begin();jp!=mp.end();jp++)
-        {
-            kima.push_back(jp->first);
-        }
-        sort(kima.begin(),kima.end());
-        
-        return kima;
-        
+        return ans;
         
         
     }
