@@ -1,36 +1,39 @@
 class Solution {
 public:
     
-    vector<vector<int>> ans;
+       
+    set<vector<int>> s;
     
-    vector<vector<int>> solve(vector<int> ip , vector<int> op)
+    void ms(int index, vector<int> &temp, int size, vector<int>& nums)
     {
-        
-        if(ip.size()==0)
+        if(index == size)
         {
-            ans.push_back(op);
-            return ans;
+            s.insert(temp);
+            return;
         }
         
-        vector<int> op1;
-        vector<int> op2;
-        op1=op;
-        op2=op;
-        op2.push_back(ip[0]);
+        temp.push_back(nums[index]);
+        ms(index+1,temp,size,nums);
+        temp.pop_back();
+        ms(index+1,temp,size,nums);
         
-     ip.erase(ip.begin()+0);
-        solve(ip,op1);
-        solve(ip,op2);
-        return ans;
+        return;
+        
     }
     
-    
     vector<vector<int>> subsets(vector<int>& nums) {
+            vector<int> temp;
+        sort(nums.begin(),nums.end());
+        ms(0,temp,nums.size(),nums);
         
-        vector<int> op;
+        vector<vector<int>> ans;
         
-     
-     ans=  solve(nums,op);
+        set<vector<int>> :: iterator it;
+        
+        for(it=s.begin();it!=s.end();it++)
+        {
+            ans.push_back(*it);
+        }
         return ans;
         
     }
